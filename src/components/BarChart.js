@@ -27,19 +27,19 @@ Properties:
     options: Options for the chart (see chart.js documentation)
  */
 
-class DoughnutChart extends Component{
-
-    render(){
-        let Doughnut = require("react-chartjs").Doughnut;
-        return (
+class BarChart extends Component{
+    render() {
+        let Bar = require("react-chartjs").Bar;
+        console.log(Bar);
+        return(
             <Graph x={this.props.x} y={this.props.y}>
                 <GraphTitle>
                     {this.props.title}
                 </GraphTitle>
-                <Doughnut height={this.props.height} width={this.props.width} data = {this.props.data} options = {this.props.options}/>
+                <Bar height={this.props.height}  width = {this.props.width} data={this.props.data} options={this.props.options}/>
             </Graph>
         );
     }
 }
 
-export default DoughnutChart;
+export default BarChart;
