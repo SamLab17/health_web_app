@@ -1,3 +1,10 @@
+### Setting up the Project
+This is the repo for the (front end of the) Health App.
+It does not include the node modules folder.
+
+Running `npm install` should download all the node module dependencies.
+
+# Default README from React:
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
