@@ -17,18 +17,11 @@ const SectionTitle = styled.main`
 `;
 
 class Sidebar extends Component {
-    state={
-        isExpanded: false
-    };
-
     pageTitles = {
         'home' : "Home",
         'preferences' : "My Preferences"
     };
 
-    onToggle = (isExpanded) =>{
-        this.setState({isExpanded : isExpanded});
-    };
 
     showTitle() {
         return this.pageTitles[this.props.currentPage];
@@ -37,7 +30,7 @@ class Sidebar extends Component {
     render() {
         return (
             <div>
-                <SideNav onSelect={this.props.updatePage} onToggle={this.onToggle}>
+                <SideNav onSelect={this.props.updatePage} onToggle={this.props.handleSidebarToggle}>
                     <SideNav.Toggle/>
                     <SideNav.Nav defaultSelected={this.props.currentPage}>
                         <NavItem eventKey="home">
@@ -58,10 +51,6 @@ class Sidebar extends Component {
                         </NavItem>
                     </SideNav.Nav>
                 </SideNav>
-
-                <SectionTitle expanded = {this.state.isExpanded}>
-                    {this.showTitle()}
-                </SectionTitle>
             </div>
         );
     }
