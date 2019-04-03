@@ -1,20 +1,20 @@
 import React, {Component} from "react";
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
-const SectionTitle = styled.main`
-    background: #eeeeee;
-    position: relative;
-    overflow: hidden;
-    transition: all .15s;
-    padding: 0 20px;
-    margin-left: ${props => (props.expanded ? 240 : 64)}px;
-    padding-top: 17px;
-    padding-bottom: 17px;
-    font-size: 25px;
-`;
+// const SectionTitle = styled.main`
+//     background: #eeeeee;
+//     position: relative;
+//     overflow: hidden;
+//     transition: all .15s;
+//     padding: 0 20px;
+//     margin-left: ${props => (props.expanded ? 240 : 64)}px;
+//     padding-top: 17px;
+//     padding-bottom: 17px;
+//     font-size: 25px;
+// `;
 
 class Sidebar extends Component {
     pageTitles = {

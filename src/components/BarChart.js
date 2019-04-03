@@ -1,23 +1,23 @@
 import React, {Component} from "react";
-import styled from 'styled-components';
+//import styled from 'styled-components';
 
 import {Container} from 'semantic-ui-react';
 
 
 //CSS for the entire graph element
-const Graph = styled.main`
-    margin-top: ${props => (props.y)}px;
-    margin-left: ${props => (props.x)}px;
-    display: inline-block;
-`;
+// const Graph = styled.main`
+//     margin-top: ${props => (props.y)}px;
+//     margin-left: ${props => (props.x)}px;
+//     display: inline-block;
+// `;
 
 //CSS for the title of the graph
-const GraphTitle = styled.main`
-    font-size: 20px;
-    text-align: center;
-    color: black;
-    width:100%;
-`;
+// const GraphTitle = styled.main`
+//     font-size: 20px;
+//     text-align: center;
+//     color: black;
+//     width:100%;
+// `;
 
 /*
 Properties:
@@ -33,12 +33,11 @@ Properties:
 class BarChart extends Component{
     render() {
         let Bar = require("react-chartjs").Bar;
-        console.log(Bar);
         return(
             <Container textAlign='center'>
-                <GraphTitle>
+                <h2>
                     {this.props.title}
-                </GraphTitle>
+                </h2>
                 <Bar height={this.props.height}  width = {this.props.width} data={this.props.data} options={this.props.options}/>
             </Container>
         );

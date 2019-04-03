@@ -36,9 +36,10 @@ class App extends React.Component {
     return (
         <div>
         <Sidebar updatePage={this.updatePage} currentPage={this.state.currentPage} handleSidebarToggle={this.handleSidebarToggle}/>
-        <div style ={{
+        <div style={{
           marginLeft: this.state.sidebarOpen ? 240: 64,
           paddingLeft: 20,
+          paddingTop: 10,
           transition: 'all .15s',
           position: 'relative'
          }}>
