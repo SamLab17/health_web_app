@@ -2,10 +2,15 @@ import React, {Component} from "react";
 import { Card, Image } from 'semantic-ui-react'
 
 class FoodCard extends Component{
-   render(){
+
+    handleCardClick = (clickEvent) => {
+
+    };
+
+    render(){
        return (
-           <Card>
-               <Image floated={"right"} src={this.props.ImageSource} size={"small"}/>
+           <Card onClick={this.handleCardClick}>
+               <Image centered src={this.props.ImageSource} size={"tiny"}/>
                <Card.Content>
                    <Card.Header>{this.props.Title}</Card.Header>
                    <Card.Meta>{this.props.Subtitle}</Card.Meta>

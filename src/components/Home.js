@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import DoughnutChart from "./DoughnutChart";
 import BarChart from "./BarChart";
 import FoodCard from "./FoodCard";
-import {Grid, Card,Statistic, Container} from "semantic-ui-react";
+import {Grid, Card,Statistic} from "semantic-ui-react";
 
 class Home extends Component{
     render(){
@@ -99,13 +99,13 @@ class Home extends Component{
 
                     <Grid.Column verticalAlign={"top"} floated={"right"}  textAlign={"left"}>
                         <Card.Group  itemsPerRow={"2"}>
-                        <FoodCard ImageSource={""} Title="Carrot" Subtitle="Side Dish"
+                        <FoodCard ImageSource={"carrot.jpg"} Title="Carrot" Subtitle="Side Dish"
                                   Description="Vegan, Vegetarian"/>
-                            <FoodCard ImageSource={""} Title="Carrot" Subtitle="Vegan, Vegetarian"
+                            <FoodCard ImageSource={"carrot.jpg"} Title="Carrot" Subtitle="Vegan, Vegetarian"
                                       Description="Side Dish"/>
-                            <FoodCard ImageSource={""} Title="Carrot" Subtitle="Side Dish"
+                            <FoodCard ImageSource={"carrot.jpg"} Title="Carrot" Subtitle="Side Dish"
                                       Description="I am a carrot and I am orange but I am not an orange." />
-                            <FoodCard ImageSource={""} Title="Potato" Subtitle="Side Dish"
+                            <FoodCard ImageSource={"potato.jpg"} Title="Potato" Subtitle="Side Dish"
                                   Description="I'm a real spud. But I can also be a real chip on your shoulder." />
                         </Card.Group>
                     </Grid.Column>
