@@ -20,7 +20,6 @@ class FoodCard extends Component{
                    <a> Remove Item </a>
                </Card.Content>
            </Card>
-
        )
    }
 

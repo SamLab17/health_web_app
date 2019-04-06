@@ -86,7 +86,7 @@ class Home extends Component{
                                 <Grid.Column>
                                     <BarChart title="My Bar Graph" height="300" data = {barData} options={options}/>
                                 </Grid.Column>
-                                <Grid.Column verticalAlign={"middle"}textAlign={"center"}>
+                                <Grid.Column verticalAlign={"middle"} textAlign={"center"}>
                                     <Statistic>
                                         <Statistic.Value>20</Statistic.Value>
                                         <Statistic.Label>Day Pulse</Statistic.Label>
