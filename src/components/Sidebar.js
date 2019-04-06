@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import {withRouter} from "react-router-dom";
 //import styled from 'styled-components';
 
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
@@ -17,20 +18,19 @@ import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 // `;
 
 class Sidebar extends Component {
-    pageTitles = {
-        'home' : "Home",
-        'preferences' : "My Preferences"
+    pageLinks = {
+        'home' : "/",
+        'preferences' : "preferences"
     };
 
-
-    showTitle() {
-        return this.pageTitles[this.props.currentPage];
-    }
+    updatePage = (newPage) =>{
+        this.props.history.push(this.pageLinks[newPage]);
+    };
 
     render() {
         return (
             <div>
-                <SideNav onSelect={this.props.updatePage} onToggle={this.props.handleSidebarToggle}>
+                <SideNav onSelect={this.updatePage} onToggle={this.props.handleSidebarToggle}>
                     <SideNav.Toggle/>
                     <SideNav.Nav defaultSelected={this.props.currentPage}>
                         <NavItem eventKey="home">
@@ -56,4 +56,4 @@ class Sidebar extends Component {
     }
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);
