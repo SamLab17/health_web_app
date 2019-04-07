@@ -3,8 +3,6 @@ import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 class FoodCard extends Component {
-  handleCardClick = clickEvent => {};
-
   render() {
     return (
       <Card>
