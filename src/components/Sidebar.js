@@ -32,7 +32,7 @@ class Sidebar extends Component {
             <div>
                 <SideNav onSelect={this.updatePage} onToggle={this.props.handleSidebarToggle}>
                     <SideNav.Toggle/>
-                    <SideNav.Nav defaultSelected={this.props.currentPage}>
+                    <SideNav.Nav>
                         <NavItem eventKey="home">
                             <NavIcon>
                                 <i className="fa fa-fw fa-home" style={{fontSize: '1.75em'}}/>
