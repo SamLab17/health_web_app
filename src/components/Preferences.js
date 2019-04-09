@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Checkbox, Grid, Form, Input, Button} from 'semantic-ui-react';
+import {Checkbox, Grid, Form, Input, Button, Message} from 'semantic-ui-react';
 import axios from 'axios';
 
 class Preferences extends Component {
@@ -20,7 +20,11 @@ class Preferences extends Component {
             soy: false,
             gluten: false,
             nuts: false
-        }
+        },
+        trySubmitDietInfo: false,
+        didSubmitDietInfo: false,
+        trySubmitPersonalInfo: false,
+        didSubmitPersonalInfo: false
     };
 
     componentDidMount(){
@@ -32,6 +36,19 @@ class Preferences extends Component {
             })
     }
 
+    submitDietaryPreferences = () =>{
+        this.setState({didSubmitDietInfo: true});
+        this.setState({trySubmitDietInfo: true})
+    };
+
+    submitPersonalInformation = () => {
+        //Try Submitting
+        //If Successful
+        this.setState({didSubmitPersonalInfo: true});
+        
+        this.setState({trySubmitPersonalInfo: true})
+    };
+
     useDietaryPreset = (e, data) => {
             if (data.name === 'vegan') {
                 this.setState({dietary_info: {beef: true, pork: true, fish: true, eggs: true,
@@ -41,6 +58,9 @@ class Preferences extends Component {
                         milk: false, soy: false, gluten: false, nuts: false}});
             }
     };
+    handleCheckBox = (e, data) => {
+        this.setState({dietary_info:{[data.name]:data.checked}});
+    }
 
     clearAll = () => {
         this.setState({dietary_info:{beef: false, pork: false, eggs: false, fish: false, milk:
@@ -86,16 +106,30 @@ class Preferences extends Component {
                         </Form>
                         <h4>The following checked items will never appear in your recommendations. </h4>
                         <Form>
-                            <Form.Field control={Checkbox} label={"Beef"} checked={this.state.dietary_info.beef}/>
-                            <Form.Field control={Checkbox} label={"Pork"} checked={this.state.dietary_info.pork}/>
-                            <Form.Field control={Checkbox} label={"Fish/Shellfish"} checked={this.state.dietary_info.fish}/>
-                            <Form.Field control={Checkbox} label={"Eggs"} checked={this.state.dietary_info.eggs}/>
-                            <Form.Field control={Checkbox} label={"Milk"} checked={this.state.dietary_info.milk}/>
-                            <Form.Field control={Checkbox} label={"Soy"} checked={this.state.dietary_info.soy}/>
-                            <Form.Field control={Checkbox} label={"Gluten"} checked={this.state.dietary_info.gluten}/>
-                            <Form.Field control={Checkbox} label={"Peanuts/Tree Nuts"} checked={this.state.dietary_info.nuts}/>
-                            <Button color={'orange'} type={"submit"}>Apply Changes</Button>
+                            <Form.Field control={Checkbox} label={"Beef"} checked={this.state.dietary_info.beef} onChange={this.handleCheckBox}/>
+                            <Form.Field control={Checkbox} label={"Pork"} checked={this.state.dietary_info.pork}onChange={this.handleCheckBox} />
+                            <Form.Field control={Checkbox} label={"Fish/Shellfish"} checked={this.state.dietary_info.fish}onChange={this.handleCheckBox} />
+                            <Form.Field control={Checkbox} label={"Eggs"} checked={this.state.dietary_info.eggs}onChange={this.handleCheckBox} />
+                            <Form.Field control={Checkbox} label={"Milk"} checked={this.state.dietary_info.milk}onChange={this.handleCheckBox} />
+                            <Form.Field control={Checkbox} label={"Soy"} checked={this.state.dietary_info.soy}onChange={this.handleCheckBox} />
+                            <Form.Field control={Checkbox} label={"Gluten"} checked={this.state.dietary_info.gluten}onChange={this.handleCheckBox} />
+                            <Form.Field control={Checkbox} label={"Peanuts/Tree Nuts"} checked={this.state.dietary_info.nuts}onChange={this.handleCheckBox} />
+                            <Button color={'orange'} type={"submit"} onClick={this.submitDietaryPreferences}>Apply Changes</Button>
                             <Button onClick={this.clearAll}>Clear All</Button>
+                            
+                            {this.state.trySubmitDietInfo ? (
+                                this.state.didSubmitDietInfo ? (
+                                <Message positive>
+                                    <Message.Header> Successfully updated dietary prefrences </Message.Header>
+                                    <p>Your dietary preferences have been successfuly updated and stored.</p>
+                                </Message>
+                            ) : (
+                                <Message negative>
+                                    <Message.Header> Could not update dietary prefrences </Message.Header>
+                                    <p>An error occurred and your dietary preferences could not be updated. Try again later.</p>
+                                </Message>
+                            )) : null}
+
                         </Form>
                     </Grid.Column>
                 </Grid>

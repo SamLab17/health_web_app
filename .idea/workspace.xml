@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14956fe2-1bc8-437a-a286-fcca21ef34bc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Preferences.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Preferences.js" afterDir="false" />
-    </list>
+    <list default="true" id="14956fe2-1bc8-437a-a286-fcca21ef34bc" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -290,7 +284,7 @@
       <workItem from="1554522599640" duration="2104000" />
       <workItem from="1554566892697" duration="1635000" />
       <workItem from="1554652232815" duration="682000" />
-      <workItem from="1554755444203" duration="4644000" />
+      <workItem from="1554755444203" duration="4702000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1553967396556</created>
@@ -355,11 +349,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554523514767</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Improved form for selecting dietary restrictions. &#10;Added a fetch request for getting user info using axios.">
+      <created>1554768923529</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1554768923529</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50980000" />
+    <option name="totallyTimeSpent" value="51038000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="824" extended-state="6" />
@@ -399,7 +400,8 @@
     <MESSAGE value="Added Food Cards, Grid layout to Home page" />
     <MESSAGE value="Added simple form to the preferences window. Not meant to be final, just proof of concept of form" />
     <MESSAGE value="Navbar now uses the React Router to handle page switches. More efficient for loading times, and shows current page in URL." />
-    <option name="LAST_COMMIT_MESSAGE" value="Navbar now uses the React Router to handle page switches. More efficient for loading times, and shows current page in URL." />
+    <MESSAGE value="Improved form for selecting dietary restrictions. &#10;Added a fetch request for getting user info using axios." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved form for selecting dietary restrictions. &#10;Added a fetch request for getting user info using axios." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/logo.svg">
