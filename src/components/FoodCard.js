@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+const RemoveLinkText = styled.div`
+  &:hover {
+    color: #ff0000;
+  }
+`;
+RemoveLinkText.defaultProps = Link.defaultProps;
 
 /*
 Properties:
@@ -29,8 +37,10 @@ class FoodCard extends Component {
               this.props.handleRemove(this.props.id);
             }}
           >
-            <Icon name={"x"} />
-            Remove Item
+            <RemoveLinkText>
+              <Icon name={"x"} />
+              Remove Item
+            </RemoveLinkText>
           </Link>
         </Card.Content>
       </Card>
