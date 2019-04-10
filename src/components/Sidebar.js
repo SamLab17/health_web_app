@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
+import styled from "styled-components";
 import { withRouter } from "react-router-dom";
-//import styled from 'styled-components';
 
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
+
+//Styling to make the navbar's background be orange
+const StyledSideNav = styled(SideNav)`
+  background-color: #f2711c;
+`;
+StyledSideNav.defaultProps = SideNav.defaultProps;
 
 class Sidebar extends Component {
   pageLinks = {
@@ -18,17 +24,17 @@ class Sidebar extends Component {
   render() {
     return (
       <div>
-        <SideNav
+        <StyledSideNav
           onSelect={this.updatePage}
           onToggle={this.props.handleSidebarToggle}
         >
           <SideNav.Toggle />
-          <SideNav.Nav>
+          <StyledSideNav.Nav>
             <NavItem eventKey="home">
               <NavIcon>
                 <i
                   className="fa fa-fw fa-home"
-                  style={{ fontSize: "1.75em" }}
+                  style={{ fontSize: "1.75em", color: "white" }}
                 />
               </NavIcon>
               <NavText>Home</NavText>
@@ -37,13 +43,13 @@ class Sidebar extends Component {
               <NavIcon>
                 <i
                   className="fa fa-fw fa-gear"
-                  style={{ fontSize: "1.75em" }}
+                  style={{ fontSize: "1.75em", color: "white" }}
                 />
               </NavIcon>
               <NavText>Preferences</NavText>
             </NavItem>
-          </SideNav.Nav>
-        </SideNav>
+          </StyledSideNav.Nav>
+        </StyledSideNav>
       </div>
     );
   }
