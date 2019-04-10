@@ -22,8 +22,8 @@ class ValidatedInput extends Component {
 
   handleChange = (event, data) => {
     this.setState({ changed: true, currentInput: data.value });
-    this.validate(data.value);
-    this.props.onChange(this.props.field, data.value, this.state.isValid);
+    let isValid = this.validate(data.value);
+    this.props.onChange(this.props.field, data.value, isValid);
   };
 
   validate(input) {
@@ -32,6 +32,7 @@ class ValidatedInput extends Component {
     if (isValid && this.props.email) isValid = this.checkEmail(input);
     if (this.props.number && !isNaN(input)) isValid = true;
     this.setState({ isValid: isValid });
+    return isValid;
   }
 
   checkEmail(email) {

@@ -1,25 +1,20 @@
 import React, { Component } from "react";
-import { Form, Input, Button } from "semantic-ui-react";
+import { Form, Button } from "semantic-ui-react";
 import SubmissionMessage from "./SubmissionMessage";
 import ValidatedInputField from "./ValidatedInput";
 
 class AccountInfoForm extends Component {
   state = {
-    personal_info: {
-      //This user's personal information
-      firstName: "Jane",
-      lastName: "Doe",
-      id: "0",
-      email: "default@default.com"
-    },
-    fieldIsValid: {
-      firstName: true,
-      lastName: true,
-      id: true,
-      email: true
-    },
+    //This user's personal information
+    firstName: "Jane",
+    lastName: "Doe",
+    id: "0",
+    email: "default@default.com",
+    firstNameValid: true,
+    lastNameValid: true,
+    idValid: true,
+    emailValid: true,
     fieldsChanged: false,
-    allFieldsValid: true,
     trySubmit: false, //We are trying/tried to send new personal information to the rest API
     didSubmit: false //If true, updating personal info was successful
   };
@@ -36,20 +31,21 @@ class AccountInfoForm extends Component {
     this.setState({ didSubmit: true });
   };
 
-  //This is broken, setting state does not work
   handleChange = (field, input, isValid) => {
-    this.setState({ fieldIsValid: { field: isValid }, fieldsChanged: true });
-    console.log(this.state.fieldIsValid);
-    if (isValid) this.setState({ personal_info: { [field]: input } });
-    console.log(field, input, isValid);
-    this.checkAllFieldsValid();
-    console.log(this.state.fieldsChanged, this.state.allFieldsValid);
+    if (isValid)
+      this.setState({
+        //If input is valid, store the new input
+        [field]: input,
+        [field + "Valid"]: isValid,
+        fieldsChanged: true
+      });
+    //Input was not valid, store that it is in a invalid state
+    else this.setState({ [field + "Valid"]: isValid, fieldsChanged: true });
   };
 
   checkAllFieldsValid() {
-    const { firstName, lastName, id, email } = this.state.fieldIsValid;
-    console.log(firstName, lastName, id, email);
-    this.setState({ allFieldsValid: firstName && lastName && id && email });
+    const { firstNameValid, lastNameValid, idValid, emailValid } = this.state;
+    return firstNameValid && lastNameValid && idValid && emailValid;
   }
 
   render() {
@@ -62,14 +58,14 @@ class AccountInfoForm extends Component {
               label="First name"
               field="firstName"
               required
-              default={this.state.personal_info.firstName}
+              default={this.state.firstName}
               onChange={this.handleChange}
             />
             <ValidatedInputField
               label="Last name"
               field="lastName"
               required
-              default={this.state.personal_info.lastName}
+              default={this.state.lastName}
               onChange={this.handleChange}
             />
           </Form.Group>
@@ -78,7 +74,7 @@ class AccountInfoForm extends Component {
             field="id"
             required
             readOnly
-            default={this.state.personal_info.id}
+            default={this.state.id}
             onChange={this.handleChange}
           />
           <ValidatedInputField
@@ -86,11 +82,11 @@ class AccountInfoForm extends Component {
             field="email"
             required
             email
-            default={this.state.personal_info.email}
+            default={this.state.email}
             onChange={this.handleChange}
           />
           <Button
-            disabled={!this.state.allFieldsValid || !this.state.fieldsChanged}
+            disabled={!this.checkAllFieldsValid() || !this.state.fieldsChanged}
             color={"orange"}
             type={"submit"}
             onClick={this.submitInfo}
