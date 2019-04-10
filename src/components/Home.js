@@ -6,7 +6,7 @@ import { Grid, Card, Statistic } from "semantic-ui-react";
 
 class Home extends Component {
   handleRemoveCard = id => {
-    console.log("remove " + id);
+    //console.log("remove " + id);
   };
 
   render() {

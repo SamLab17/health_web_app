@@ -4,17 +4,16 @@ import SubmissionMessage from "./SubmissionMessage";
 
 class DietaryForm extends Component {
   state = {
-    dietary_info: {
-      //This user's dietary restrictions
-      beef: false,
-      pork: false,
-      fish: false,
-      eggs: false,
-      milk: false,
-      soy: false,
-      gluten: false,
-      nuts: false
-    },
+    //This user's dietary restrictions
+    beef: false,
+    pork: false,
+    fish: false,
+    eggs: false,
+    milk: false,
+    soy: false,
+    gluten: false,
+    nuts: false,
+    fieldsChanged: false,
     trySubmit: false, //We are trying/tried to send new dietary information to the rest API
     didSubmit: false //If true, updating dietary info was successful
   };
@@ -24,65 +23,62 @@ class DietaryForm extends Component {
   }
 
   submitPreferences = () => {
-    this.setState({ trySubmit: true });
+    this.setState({ fieldsChanged: false, trySubmit: true, didSubmit: true });
     //Try Submitting to rest API
 
     //If Successful
-    this.setState({ didSubmit: true });
+    //this.setState({ didSubmit: true });
   };
 
   usePreset = (e, data) => {
     if (data.name === "vegan") {
       this.setState({
-        dietary_info: {
-          beef: true,
-          pork: true,
-          fish: true,
-          eggs: true,
-          milk: true,
-          soy: false,
-          gluten: false,
-          nuts: false
-        }
+        beef: true,
+        pork: true,
+        fish: true,
+        eggs: true,
+        milk: true,
+        soy: false,
+        gluten: false,
+        nuts: false,
+        fieldsChanged: true
       });
     } else if (data.name === "vegetarian") {
       this.setState({
-        dietary_info: {
-          beef: true,
-          pork: true,
-          fish: true,
-          eggs: false,
-          milk: false,
-          soy: false,
-          gluten: false,
-          nuts: false
-        }
+        beef: true,
+        pork: true,
+        fish: true,
+        eggs: false,
+        milk: false,
+        soy: false,
+        gluten: false,
+        nuts: false,
+        fieldsChanged: true
       });
     }
-    this.setState({ trySubmit: false });
   };
 
   handleCheckBox = (e, data) => {
-    this.setState({ dietary_info: { [data.name]: data.checked } });
-    this.setState({ trySubmit: false });
+    this.setState({
+      [data.name]: data.checked,
+      fieldsChanged: true
+    });
   };
 
   clearAll = () => {
     this.setState({
-      dietary_info: {
-        beef: false,
-        pork: false,
-        eggs: false,
-        fish: false,
-        milk: false,
-        soy: false,
-        nuts: false,
-        gluten: false,
-        vegan: false,
-        vegetarian: false
-      }
+      beef: false,
+      pork: false,
+      eggs: false,
+      fish: false,
+      milk: false,
+      soy: false,
+      nuts: false,
+      gluten: false,
+      vegan: false,
+      vegetarian: false,
+      fieldsChanged: true
     });
-    this.setState({ trySubmit: false });
   };
 
   render() {
@@ -114,67 +110,84 @@ class DietaryForm extends Component {
         <Form>
           <Form.Field
             control={Checkbox}
+            name="beef"
             label={"Beef"}
-            checked={this.state.dietary_info.beef}
+            checked={this.state.beef}
             onChange={this.handleCheckBox}
           />
           <Form.Field
             control={Checkbox}
+            name="pork"
             label={"Pork"}
-            checked={this.state.dietary_info.pork}
+            checked={this.state.pork}
             onChange={this.handleCheckBox}
           />
           <Form.Field
             control={Checkbox}
+            name="fish"
             label={"Fish/Shellfish"}
-            checked={this.state.dietary_info.fish}
+            checked={this.state.fish}
             onChange={this.handleCheckBox}
           />
           <Form.Field
             control={Checkbox}
+            name="eggs"
             label={"Eggs"}
-            checked={this.state.dietary_info.eggs}
+            checked={this.state.eggs}
             onChange={this.handleCheckBox}
           />
           <Form.Field
             control={Checkbox}
+            name="milk"
             label={"Milk"}
-            checked={this.state.dietary_info.milk}
+            checked={this.state.milk}
             onChange={this.handleCheckBox}
           />
           <Form.Field
             control={Checkbox}
+            name="soy"
             label={"Soy"}
-            checked={this.state.dietary_info.soy}
+            checked={this.state.soy}
             onChange={this.handleCheckBox}
           />
           <Form.Field
             control={Checkbox}
+            name="gluten"
             label={"Gluten"}
-            checked={this.state.dietary_info.gluten}
+            checked={this.state.gluten}
             onChange={this.handleCheckBox}
           />
           <Form.Field
             control={Checkbox}
+            name="nuts"
             label={"Peanuts/Tree Nuts"}
-            checked={this.state.dietary_info.nuts}
+            checked={this.state.nuts}
             onChange={this.handleCheckBox}
           />
           <Button
             color={"orange"}
             type={"submit"}
             onClick={this.submitPreferences}
+            disabled={!this.state.fieldsChanged}
           >
             Update Dietary Restrictions
           </Button>
           <Button onClick={this.clearAll}>Clear All</Button>
         </Form>
         <SubmissionMessage
-          visible={this.state.trySubmit && this.state.didSubmit}
+          visible={
+            !this.state.fieldsChanged &&
+            this.state.trySubmit &&
+            this.state.didSubmit
+          }
           success={true}
         />
         <SubmissionMessage
-          visible={this.state.trySubmit && !this.state.didSubmit}
+          visible={
+            !this.state.fieldsChanged &&
+            this.state.trySubmit &&
+            !this.state.didSubmit
+          }
           success={false}
         />
       </div>

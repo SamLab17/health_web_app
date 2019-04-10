@@ -20,7 +20,7 @@ class Preferences extends Component {
 
   componentDidMount() {
     axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
-      console.log(response);
+      //console.log(response);
       let first = response.data[0];
       this.setState({
         firstName: first.name.split(" ")[0],
