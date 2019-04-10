@@ -5,6 +5,10 @@ import FoodCard from "./FoodCard";
 import { Grid, Card, Statistic } from "semantic-ui-react";
 
 class Home extends Component {
+  handleRemoveCard = id => {
+    console.log("remove " + id);
+  };
+
   render() {
     let data = [
       //Data just for testing the doughnut graph
@@ -138,24 +142,32 @@ class Home extends Component {
                 Title="Carrot"
                 Subtitle="Side Dish"
                 Description="Vegan, Vegetarian"
+                handleRemove={this.props.handleRemoveCard}
+                id="1"
               />
               <FoodCard
                 ImageSource={"carrot.jpg"}
                 Title="Carrot"
                 Subtitle="Vegan, Vegetarian"
                 Description="Side Dish"
+                handleRemove={this.props.handleRemoveCard}
+                id="2"
               />
               <FoodCard
                 ImageSource={"carrot.jpg"}
                 Title="Carrot"
                 Subtitle="Side Dish"
                 Description="I am a carrot and I am orange but I am not an orange."
+                handleRemove={this.props.handleRemoveCard}
+                id="3"
               />
               <FoodCard
                 ImageSource={"potato.jpg"}
                 Title="Potato"
                 Subtitle="Side Dish"
                 Description="I'm a real spud. But I can also be a real chip on your shoulder."
+                handleRemove={this.props.handleRemoveCard}
+                id="4"
               />
             </Card.Group>
           </Grid.Column>
