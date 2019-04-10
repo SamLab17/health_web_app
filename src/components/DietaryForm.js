@@ -19,12 +19,15 @@ class DietaryForm extends Component {
   };
 
   componentDidMount() {
-    //Fetch User's Dietary preferences, set state
+    //Fetch User's Dietary preferences, set state for default values
   }
 
   submitPreferences = () => {
     this.setState({ fieldsChanged: false, trySubmit: true, didSubmit: true });
-    //Try Submitting to rest API
+
+    if (this.checkAllFieldsValid()) {
+      //Try Submitting to rest API
+    }
 
     //If Successful
     //this.setState({ didSubmit: true });
@@ -64,6 +67,19 @@ class DietaryForm extends Component {
       fieldsChanged: true
     });
   };
+
+  allBoxesAreUnchecked() {
+    return (
+      !this.state.beef &&
+      !this.state.pork &&
+      !this.state.fish &&
+      !this.state.eggs &&
+      !this.state.milk &&
+      !this.state.soy &&
+      !this.state.gluten &&
+      !this.state.nuts
+    );
+  }
 
   clearAll = () => {
     this.setState({
@@ -172,7 +188,12 @@ class DietaryForm extends Component {
           >
             Update Dietary Restrictions
           </Button>
-          <Button onClick={this.clearAll}>Clear All</Button>
+          <Button
+            disabled={this.allBoxesAreUnchecked()}
+            onClick={this.clearAll}
+          >
+            Clear All
+          </Button>
         </Form>
         <SubmissionMessage
           visible={

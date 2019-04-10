@@ -25,7 +25,9 @@ class AccountInfoForm extends Component {
 
   submitInfo = () => {
     this.setState({ trySubmit: true });
-    //Try Submitting to rest API
+    if (this.checkAllFieldsValid()) {
+      //Try Submitting to rest API
+    }
 
     //If Successful
     this.setState({ didSubmit: true });
@@ -64,7 +66,6 @@ class AccountInfoForm extends Component {
             <ValidatedInputField
               label="Last name"
               field="lastName"
-              required
               default={this.state.lastName}
               onChange={this.handleChange}
             />

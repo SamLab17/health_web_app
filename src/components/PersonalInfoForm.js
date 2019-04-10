@@ -42,8 +42,10 @@ class PersonalInfoForm extends Component {
 
   submitInfo = () => {
     this.setState({ trySubmit: true });
-    //Try Submitting to rest API
 
+    if (this.checkAllFieldsValid()) {
+      //Try Submitting to rest API
+    }
     //If Successful
     this.setState({ didSubmit: true });
   };
@@ -57,6 +59,7 @@ class PersonalInfoForm extends Component {
             <ValidatedInput
               label="Height (inches)"
               field="height"
+              required
               number
               default={this.state.height}
               onChange={this.handleChange}
@@ -64,6 +67,7 @@ class PersonalInfoForm extends Component {
             <ValidatedInput
               label="Weight (pounds)"
               field="weight"
+              requried
               number
               default={this.state.weight}
               onChange={this.handleChange}
