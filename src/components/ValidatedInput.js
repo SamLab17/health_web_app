@@ -29,14 +29,20 @@ class ValidatedInput extends Component {
   validate(input) {
     let isValid = true;
     if (this.props.required && input === "") isValid = false;
-    if (isValid && this.props.email) isValid = this.checkEmail(input);
-    if (this.props.number && !isNaN(input)) isValid = true;
+    if (this.props.email && isValid) isValid = this.checkEmail(input);
+    if (this.props.number) isValid = this.checkNumber(input);
     this.setState({ isValid: isValid });
+    console.log("input=" + input + " " + isValid);
     return isValid;
   }
 
+  checkNumber(num) {
+    const re = /^[0-9]+$/;
+    return re.test(num);
+  }
+
   checkEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
 

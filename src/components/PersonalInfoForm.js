@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import { Form, Input, Button } from "semantic-ui-react";
+import { Form, Radio, Button } from "semantic-ui-react";
 import SubmissionMessage from "./SubmissionMessage";
+import ValidatedInput from "./ValidatedInput";
 
 class PersonalInfoForm extends Component {
   state = {
-    personal_info: {
-      height: -1,
-      weight: -1,
-      gender: "male"
-    },
+    height: 70,
+    weight: 180,
+    gender: "male",
+    heightValid: true,
+    weightValid: true,
+    fieldsChanged: false,
     trySubmit: false,
     didSubmit: false
   };
@@ -16,6 +18,27 @@ class PersonalInfoForm extends Component {
   componentDidMount() {
     //Try to get user's Personal Information
   }
+
+  handleChange = (field, input, isValid) => {
+    if (isValid)
+      this.setState({
+        //If input is valid, store the new input
+        [field]: input,
+        [field + "Valid"]: isValid,
+        fieldsChanged: true
+      });
+    //Input was not valid, store that it is in a invalid state
+    else this.setState({ [field + "Valid"]: isValid, fieldsChanged: true });
+  };
+
+  checkAllFieldsValid() {
+    const { heightValid, weightValid } = this.state;
+    return heightValid && weightValid;
+  }
+
+  handleRadioChange = (event, data) => {
+    this.setState({ fieldsChanged: true, gender: data.value });
+  };
 
   submitInfo = () => {
     this.setState({ trySubmit: true });
@@ -31,31 +54,46 @@ class PersonalInfoForm extends Component {
         <h3>Personal Information</h3>
         <Form>
           <Form.Group width={"equal"}>
-            <Form.Field required>
-              <label>Height (inches)</label>
-              <Input />
-            </Form.Field>
-            <Form.Field required>
-              <label>Weight (pounds)</label>
-              <Input />
-            </Form.Field>
+            <ValidatedInput
+              label="Height (inches)"
+              field="height"
+              number
+              default={this.state.height}
+              onChange={this.handleChange}
+            />
+            <ValidatedInput
+              label="Weight (pounds)"
+              field="weight"
+              number
+              default={this.state.weight}
+              onChange={this.handleChange}
+            />
           </Form.Group>
           <Form.Group inline>
             <label>Gender: </label>
-            <Form.Field
-              label="Male"
-              control="input"
-              type="radio"
-              name="genderRadios"
-            />
-            <Form.Field
+            <Form.Field>
+              <Radio
+                label="Male"
+                name="gender"
+                value="male"
+                checked={this.state.gender === "male"}
+                onChange={this.handleRadioChange}
+              />
+            </Form.Field>
+            <Radio
               label="Female"
-              control="input"
-              type="radio"
-              name="genderRadios"
+              name="gender"
+              value="female"
+              checked={this.state.gender === "female"}
+              onChange={this.handleRadioChange}
             />
           </Form.Group>
-          <Button color={"orange"} type={"submit"} onClick={this.submitInfo}>
+          <Button
+            disabled={!this.checkAllFieldsValid() || !this.state.fieldsChanged}
+            color={"orange"}
+            type={"submit"}
+            onClick={this.submitInfo}
+          >
             Update Personal Information
           </Button>
         </Form>
