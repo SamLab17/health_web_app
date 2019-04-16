@@ -40,14 +40,15 @@ class PersonalInfoForm extends Component {
     this.setState({ fieldsChanged: true, gender: data.value });
   };
 
-  submitInfo = () => {
-    this.setState({ trySubmit: true });
+  submitPreferences = () => {
+    this.setState({ fieldsChanged: false, trySubmit: true, didSubmit: true });
 
     if (this.checkAllFieldsValid()) {
       //Try Submitting to rest API
     }
+
     //If Successful
-    this.setState({ didSubmit: true });
+    //this.setState({ didSubmit: true });
   };
 
   render() {
@@ -83,7 +84,9 @@ class PersonalInfoForm extends Component {
                 checked={this.state.gender === "male"}
                 onChange={this.handleRadioChange}
               />
-            </Form.Field>
+                        </Form.Field>
+                        <Form.Field>
+
             <Radio
               label="Female"
               name="gender"
@@ -91,22 +94,42 @@ class PersonalInfoForm extends Component {
               checked={this.state.gender === "female"}
               onChange={this.handleRadioChange}
             />
+                        </Form.Field>
+            <Form.Field>
+
+            <Radio
+              label="Other"
+              name="gender"
+              value="other"
+              checked={this.state.gender === "other"}
+              onChange={this.handleRadioChange}
+            />
+                        </Form.Field>
+
           </Form.Group>
           <Button
             disabled={!this.checkAllFieldsValid() || !this.state.fieldsChanged}
             color={"orange"}
             type={"submit"}
-            onClick={this.submitInfo}
+            onClick={this.submitPreferences}
           >
             Update Personal Information
           </Button>
         </Form>
         <SubmissionMessage
-          visible={this.state.trySubmit && this.state.didSubmit}
+          visible={
+            !this.state.fieldsChanged &&
+            this.state.trySubmit &&
+            this.state.didSubmit
+          }
           success={true}
         />
         <SubmissionMessage
-          visible={this.state.trySubmit && !this.state.didSubmit}
+          visible={
+            !this.state.fieldsChanged &&
+            this.state.trySubmit &&
+            !this.state.didSubmit
+          }
           success={false}
         />
       </div>

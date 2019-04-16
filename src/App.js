@@ -1,12 +1,14 @@
 import React from "react";
-import Sidebar from "./components/Sidebar";
-import Home from "./components/Home";
-import Preferences from "./components/Preferences";
 import { BrowserRouter, Route } from "react-router-dom";
+import MainApp from "./components/MainApp";
+import Login from "./components/Login";
+import CreateUser from "./components/CreateUser/CreateUser";
+import BusinessPage from "./components/BusinessPage";
 
 class App extends React.Component {
   state = {
-    sidebarOpen: false
+    sidebarOpen: false,
+    loggedIn: false
   };
 
   handleSidebarToggle = isOpen => {
@@ -15,26 +17,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <BrowserRouter>
-          <Sidebar
-            updatePage={this.updatePage}
-            handleSidebarToggle={this.handleSidebarToggle}
-          />
-          <div
-            style={{
-              marginLeft: this.state.sidebarOpen ? 240 : 64,
-              paddingLeft: 20,
-              paddingTop: 10,
-              transition: "all .15s",
-              position: "relative"
-            }}
-          >
-            <Route exact path={"/"} component={Home} />
-            <Route path={"/preferences"} component={Preferences} />
-          </div>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <Route exact path="/" component={BusinessPage} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={CreateUser} />
+        <Route path="/user/:userId" component={MainApp} />
+      </BrowserRouter>
     );
   }
 }

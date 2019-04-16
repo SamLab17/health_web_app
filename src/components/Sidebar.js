@@ -13,8 +13,8 @@ StyledSideNav.defaultProps = SideNav.defaultProps;
 
 class Sidebar extends Component {
   pageLinks = {
-    home: "/",
-    preferences: "preferences"
+    home: "/user/" + this.props.userId + "/",
+    preferences: "/user/" + this.props.userId + "/preferences"
   };
 
   updatePage = newPage => {

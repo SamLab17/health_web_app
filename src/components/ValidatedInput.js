@@ -32,7 +32,6 @@ class ValidatedInput extends Component {
     if (this.props.email && isValid) isValid = this.checkEmail(input);
     if (this.props.number) isValid = this.checkNumber(input);
     this.setState({ isValid: isValid });
-    console.log("input=" + input + " " + isValid);
     return isValid;
   }
 
@@ -54,7 +53,11 @@ class ValidatedInput extends Component {
         error={!this.state.isValid && this.state.changed}
       >
         <label>{this.props.label}</label>
-        <Input onChange={this.handleChange} defaultValue={this.props.default} />
+        <Input
+          onChange={this.handleChange}
+          defaultValue={this.props.default}
+          type={this.props.type}
+        />
       </Form.Field>
     );
   }

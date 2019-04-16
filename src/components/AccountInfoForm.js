@@ -23,14 +23,23 @@ class AccountInfoForm extends Component {
     //Retrieve account information
   }
 
-  submitInfo = () => {
-    this.setState({ trySubmit: true });
+  componentDidUpdate() {
+    console.log(
+      this.state.fieldsChanged,
+      this.state.trySubmit,
+      this.state.didSubmit
+    );
+  }
+
+  submitPreferences = () => {
+    this.setState({ fieldsChanged: false, trySubmit: true, didSubmit: true });
+
     if (this.checkAllFieldsValid()) {
       //Try Submitting to rest API
     }
 
     //If Successful
-    this.setState({ didSubmit: true });
+    //this.setState({ didSubmit: true });
   };
 
   handleChange = (field, input, isValid) => {
@@ -90,17 +99,25 @@ class AccountInfoForm extends Component {
             disabled={!this.checkAllFieldsValid() || !this.state.fieldsChanged}
             color={"orange"}
             type={"submit"}
-            onClick={this.submitInfo}
+            onClick={this.submitPreferences}
           >
             Update Account Information
           </Button>
         </Form>
         <SubmissionMessage
-          visible={this.state.trySubmit && this.state.didSubmit}
+          visible={
+            !this.state.fieldsChanged &&
+            this.state.trySubmit &&
+            this.state.didSubmit
+          }
           success={true}
         />
         <SubmissionMessage
-          visible={this.state.trySubmit && !this.state.didSubmit}
+          visible={
+            !this.state.fieldsChanged &&
+            this.state.trySubmit &&
+            !this.state.didSubmit
+          }
           success={false}
         />
       </div>
