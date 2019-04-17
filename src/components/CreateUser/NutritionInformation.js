@@ -111,7 +111,7 @@ class NutritionInformation extends Component {
       }
     `}
         </style>
-        <Header as="h2" textAlign="center" style={{ marginBottom: "20" }}>
+        <Header as="h3" textAlign="center" style={{ marginBottom: "20" }}>
           Nutrition Information
         </Header>
         <Grid style={{ paddingTop: "20" }} columns="2" centered="true">

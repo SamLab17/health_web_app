@@ -67,7 +67,7 @@ export default class PersonalInformation extends Component {
       }
     `}
         </style>
-        <Header as="h2" textAlign="center" style={{ marginBottom: "20" }}>
+        <Header as="h3" textAlign="center" style={{ marginBottom: "20" }}>
           Personal Information
         </Header>
         <Grid style={{ paddingTop: "20" }} columns="1" centered>

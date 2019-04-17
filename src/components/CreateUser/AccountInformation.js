@@ -72,7 +72,7 @@ class CreateUser extends Component {
       }
     `}
         </style>
-        <Header as="h1" textAlign="center" style={{ marginBottom: "20" }}>
+        <Header as="h3" textAlign="center" style={{ marginBottom: "20" }}>
           Account Information
         </Header>
         <Grid style={{ paddingTop: "20" }} columns="1" centered>
