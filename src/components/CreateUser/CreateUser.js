@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AccountInformation from "./AccountInformation";
 import PersonalInformation from "./PersonalInformation";
 import NutritionInformation from "./NutritionInformation";
+import { Header } from "semantic-ui-react";
 
 class CreateUser extends Component {
   state = {
@@ -83,6 +84,10 @@ class CreateUser extends Component {
       }
     `}
         </style>
+        <Header as="h1" textAlign="center" style={{ marginBottom: "20" }}>
+          Create Account
+        </Header>
+
         {this.renderPage(this.state.currentPage)}
       </div>
     );

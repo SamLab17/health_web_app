@@ -73,11 +73,10 @@ class CreateUser extends Component {
     `}
         </style>
         <Header as="h1" textAlign="center" style={{ marginBottom: "20" }}>
-          Create Account Form
+          Account Information
         </Header>
-        <Grid style={{ paddingTop: "20" }} columns="2" centered>
+        <Grid style={{ paddingTop: "20" }} columns="1" centered>
           <Grid.Column style={{ maxWidth: 500 }}>
-            <h3>Account Information</h3>
             <Form>
               <Form.Group unstackable width={"equal"} placeholder="Test text">
                 <ValidatedInputField

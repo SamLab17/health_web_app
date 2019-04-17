@@ -111,8 +111,8 @@ class NutritionInformation extends Component {
       }
     `}
         </style>
-        <Header as="h1" textAlign="center" style={{ marginBottom: "20" }}>
-          Create Account Form
+        <Header as="h2" textAlign="center" style={{ marginBottom: "20" }}>
+          Nutrition Information
         </Header>
         <Grid style={{ paddingTop: "20" }} columns="2" centered="true">
           <Grid.Column style={{ maxWidth: 500 }}>
