@@ -17,6 +17,7 @@ Properties:
 class BarChart extends Component {
   render() {
     let Bar = require("react-chartjs").Bar;
+    console.log(this.props.options);
     return (
       <Container textAlign="center">
         <h2>{this.props.title}</h2>

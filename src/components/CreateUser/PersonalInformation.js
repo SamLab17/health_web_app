@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Grid, Form, Button, Icon } from "semantic-ui-react";
+import { Header, Grid, Form, Button, Icon, Radio } from "semantic-ui-react";
 import ValidatedInputField from "../ValidatedInput";
 
 const minHeight = 20;
@@ -20,18 +20,22 @@ export default class PersonalInformation extends Component {
 
   handleChange = (field, input, isValid) => {
     if (isValid) {
-      let validCheck = true;
-      if (field === "height")
-        validCheck = input > minHeight && input < maxHeight;
-      else if (field === "weight") validCheck = input > minWeight;
-      else validCheck = input > minAge;
-      if (validCheck) {
-        this.setState({
-          [field]: input,
-          [field + "Valid"]: true,
-          fieldsChanged: true
-        });
-      }
+      this.setState({
+        [field]: input,
+        [field + "Valid"]: true,
+        fieldsChanged: true
+      });
+      // let validCheck = true;
+      // if (field === "height")
+      //   validCheck = input > minHeight && input < maxHeight;
+      // else if (field === "weight") validCheck = input > minWeight;
+      // else validCheck = input > minAge;
+      // if (validCheck) {
+      //   this.setState({
+      //     [field]: input,
+      //     [field + "Valid"]: true,
+      //     fieldsChanged: true
+      //   });
     }
     this.setState({ [field + "Valid"]: false, fieldsChanged: true });
   };
@@ -76,25 +80,52 @@ export default class PersonalInformation extends Component {
               <ValidatedInputField
                 label="Height (inches)"
                 field="height"
-                required
                 number
                 onChange={this.handleChange}
               />
               <ValidatedInputField
                 label="Weight (pounds)"
                 field="weight"
-                required
                 number
                 onChange={this.handleChange}
               />
               <ValidatedInputField
                 label="Age (years)"
                 field="age"
-                required
                 number
                 onChange={this.handleChange}
               />
             </Form>
+            <Form.Group inline>
+              <label>Gender: </label>
+              <Form.Field>
+                <Radio
+                  label="Male"
+                  name="gender"
+                  value="male"
+                  checked={this.state.gender === "male"}
+                  onChange={this.handleRadioChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Radio
+                  label="Female"
+                  name="gender"
+                  value="female"
+                  checked={this.state.gender === "female"}
+                  onChange={this.handleRadioChange}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Radio
+                  label="Other"
+                  name="gender"
+                  value="other"
+                  checked={this.state.gender === "other"}
+                  onChange={this.handleRadioChange}
+                />
+              </Form.Field>
+            </Form.Group>
           </Grid.Column>
           <Grid.Row>
             <Button

@@ -8,12 +8,13 @@ import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 //Styling to make the navbar's background be orange
 const StyledSideNav = styled(SideNav)`
   background-color: #f2711c;
+  height: 100%;
 `;
 StyledSideNav.defaultProps = SideNav.defaultProps;
 
 class Sidebar extends Component {
   pageLinks = {
-    home: "/user/" + this.props.userId + "/",
+    home: "/user/" + this.props.userId,
     preferences: "/user/" + this.props.userId + "/preferences"
   };
 

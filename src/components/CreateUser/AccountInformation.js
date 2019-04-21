@@ -48,16 +48,8 @@ class CreateUser extends Component {
   };
 
   checkAllFieldsValid() {
-    const {
-      firstNameValid,
-      lastNameValid,
-      idValid,
-      emailValid,
-      passwordValid
-    } = this.state;
-    return (
-      firstNameValid && lastNameValid && idValid && emailValid && passwordValid
-    );
+    const { firstNameValid, idValid, emailValid, passwordValid } = this.state;
+    return firstNameValid && idValid && emailValid && passwordValid;
   }
 
   render() {

@@ -52,25 +52,25 @@ class Home extends Component {
         {
           label: "# of Votes",
           fillColor: [
-            "rgba(248, 151, 31, 0.5)",
-            "rgba(255, 214, 0,0.5)",
-            "rgba(166, 205, 87,0.5)",
-            "rgba(87, 157, 66,0.5)",
-            "rgba(0, 169, 183,0.5)",
-            "rgba(0, 95, 134,0.5)",
-            "rgba(156, 173, 183,0.5)"
+            "rgba(87, 157, 66, 0.5)",
+            "rgba(239, 58, 50, 0.5)",
+            "rgba(87, 157, 66, 0.5)",
+            "rgba(239, 58, 50, 0.5)",
+            "rgba(234, 176, 46, 0.5)",
+            "rgba(87, 157, 66, 0.5)",
+            "rgba(234, 176, 46, 0.5)"
           ],
           strokeColor: [
-            "rgb(248, 151, 31)",
-            "rgb(255, 214, 0)",
-            "rgb(166, 205, 87)",
             "rgb(87, 157, 66)",
-            "rgb(0, 169, 183)",
-            "rgb(0, 95, 134)",
-            "rgb(156, 173, 183)"
+            "rgb(239, 58, 50)",
+            "rgb(87, 157, 66)",
+            "rgb(239, 58, 50)",
+            "rgb(234, 176, 46)",
+            "rgb(87, 157, 66)",
+            "rgb(234, 176, 46)"
           ],
           borderWidth: 1,
-          data: [12, 20, 3, 5, 2, 3, 6]
+          data: [2200, 2500, 2200, 2500, 1800, 2200, 2350]
         }
       ]
     };
@@ -79,7 +79,10 @@ class Home extends Component {
         yAxes: [
           {
             ticks: {
-              beginAtZero: true
+              max: 3,
+              min: 0,
+              maxTicksLimit: 3,
+              beginAtZero: false
             }
           }
         ]
@@ -95,7 +98,7 @@ class Home extends Component {
               <Grid columns={2} padded={"vertically"}>
                 <Grid.Column>
                   <DoughnutChart
-                    title="My Graph"
+                    title="Pie Graph"
                     data={data}
                     options={{
                       animationEasing: "easeOutExpo",
@@ -115,7 +118,7 @@ class Home extends Component {
               <Grid columns={2} padded={"vertically"}>
                 <Grid.Column>
                   <BarChart
-                    title="My Bar Graph"
+                    title="Bar Graph"
                     height="300"
                     data={barData}
                     options={options}
@@ -136,36 +139,36 @@ class Home extends Component {
             floated={"right"}
             textAlign={"left"}
           >
-            <Card.Group itemsPerRow={"2"}>
+            <Card.Group itemsPerRow={"2"} stackable>
               <FoodCard
-                ImageSource={"carrot.jpg"}
-                Title="Carrot"
-                Subtitle="Side Dish"
-                Description="Vegan, Vegetarian"
+                ImageSource={"../chicken.jpg"}
+                Title="Hawaiian BBQ Chicken"
+                Subtitle="Main Dish"
+                Description="Gluten Free"
                 handleRemove={this.props.handleRemoveCard}
                 id="1"
               />
               <FoodCard
-                ImageSource={"carrot.jpg"}
-                Title="Carrot"
-                Subtitle="Vegan, Vegetarian"
-                Description="Side Dish"
+                ImageSource={"../rice.jpg"}
+                Title="Garlic & Ginger Jasmine Rice"
+                Subtitle="Side Dish"
+                Description="Vegan, Gluten Free"
                 handleRemove={this.props.handleRemoveCard}
                 id="2"
               />
               <FoodCard
-                ImageSource={"carrot.jpg"}
-                Title="Carrot"
+                ImageSource={"../carrots.jpg"}
+                Title="Roasted Baby Carrots"
                 Subtitle="Side Dish"
-                Description="I am a carrot and I am orange but I am not an orange."
+                Description="Vegan, Gluten Free"
                 handleRemove={this.props.handleRemoveCard}
                 id="3"
               />
               <FoodCard
-                ImageSource={"potato.jpg"}
-                Title="Potato"
-                Subtitle="Side Dish"
-                Description="I'm a real spud. But I can also be a real chip on your shoulder."
+                ImageSource={"../cookie.jpg"}
+                Title="Freshly Baked Chocolate Chip Cookie"
+                Subtitle="Dessert"
+                Description="Vegetarian"
                 handleRemove={this.props.handleRemoveCard}
                 id="4"
               />

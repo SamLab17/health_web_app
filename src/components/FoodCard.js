@@ -24,7 +24,7 @@ class FoodCard extends Component {
   render() {
     return (
       <Card>
-        <Image centered src={this.props.ImageSource} size={"tiny"} />
+        <Image centered src={this.props.ImageSource} size={"small"} />
         <Card.Content>
           <Card.Header>{this.props.Title}</Card.Header>
           <Card.Meta>{this.props.Subtitle}</Card.Meta>

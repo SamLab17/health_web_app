@@ -85,7 +85,7 @@ class CreateUser extends Component {
     `}
         </style>
         <Header as="h1" textAlign="center" style={{ marginBottom: "20" }}>
-          Create Account
+          Create Your Health+ Account
         </Header>
 
         {this.renderPage(this.state.currentPage)}

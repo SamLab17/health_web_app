@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button, Grid, Segment, Header } from "semantic-ui-react";
+import { Image, Form, Button, Grid, Segment, Header } from "semantic-ui-react";
 import ValidatedInputField from "./ValidatedInput";
 import axios from "axios";
 
@@ -64,6 +64,7 @@ export default class Login extends Component {
         >
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as="h2" color="orange" textAlign="center">
+              <Image src="smalllogo.png" />
               Log-in to your account
             </Header>
             <Form>
