@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import DoughnutChart from "./DoughnutChart";
 import BarChart from "./BarChart";
 import FoodCard from "./FoodCard";
-import { Grid, Card, Statistic } from "semantic-ui-react";
+import { Responsive, Grid, Card, Statistic } from "semantic-ui-react";
 
 class Home extends Component {
   handleRemoveCard = id => {
@@ -75,18 +75,15 @@ class Home extends Component {
       ]
     };
     let options = {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              max: 3,
-              min: 0,
-              maxTicksLimit: 3,
-              beginAtZero: false
-            }
-          }
-        ]
-      }
+      scaleBeginAtZero: false,
+      scaleOverride: true,
+      // ** Required if scaleOverride is true **
+      // Number - The number of steps in a hard coded scale
+      scaleSteps: 5,
+      // Number - The value jump in the hard coded scale
+      scaleStepWidth: 300,
+      // Number - The scale starting value
+      scaleStartValue: 1600
     };
 
     return (
@@ -95,10 +92,12 @@ class Home extends Component {
         <Grid columns={2} padded>
           <Grid.Column verticalAlign={"middle"} floated={"left"}>
             <Grid.Row>
-              <Grid columns={2} padded={"vertically"}>
-                <Grid.Column>
-                  <DoughnutChart
+              <Grid columns={"equal"} padded={"vertically"}>
+                <Grid.Column verticalAlign={"middle"} stretched>
+                  <Responsive
+                    as={DoughnutChart}
                     title="Pie Graph"
+                    height="180"
                     data={data}
                     options={{
                       animationEasing: "easeOutExpo",
@@ -106,7 +105,11 @@ class Home extends Component {
                     }}
                   />
                 </Grid.Column>
-                <Grid.Column verticalAlign={"middle"} textAlign={"center"}>
+                <Grid.Column
+                  verticalAlign={"middle"}
+                  textAlign={"center"}
+                  only="computer"
+                >
                   <Statistic>
                     <Statistic.Value>5,500</Statistic.Value>
                     <Statistic.Label>Points</Statistic.Label>
@@ -115,16 +118,21 @@ class Home extends Component {
               </Grid>
             </Grid.Row>
             <Grid.Row>
-              <Grid columns={2} padded={"vertically"}>
+              <Grid columns={"equal"} padded={"vertically"}>
                 <Grid.Column>
-                  <BarChart
+                  <Responsive
+                    as={BarChart}
                     title="Bar Graph"
-                    height="300"
+                    height="320"
                     data={barData}
                     options={options}
                   />
                 </Grid.Column>
-                <Grid.Column verticalAlign={"middle"} textAlign={"center"}>
+                <Grid.Column
+                  verticalAlign={"middle"}
+                  textAlign={"center"}
+                  only="computer"
+                >
                   <Statistic>
                     <Statistic.Value>20</Statistic.Value>
                     <Statistic.Label>Day Pulse</Statistic.Label>
