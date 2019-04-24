@@ -15,7 +15,6 @@ class MainApp extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <BrowserRouter>
@@ -25,12 +24,14 @@ class MainApp extends React.Component {
             userId={this.state.userId}
           />
           <div
+            className="mainSection"
             style={{
               marginLeft: this.state.sidebarOpen ? 240 : 64,
               paddingLeft: 20,
               paddingTop: 10,
               transition: "all .15s",
-              position: "relative"
+              position: "relative",
+              height: "100%"
             }}
           >
             <Route exact path={"/user/" + this.state.userId} component={Home} />

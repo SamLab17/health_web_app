@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import DoughnutChart from "./DoughnutChart";
 import BarChart from "./BarChart";
-import FoodCard from "./FoodCard";
-import { Responsive, Grid, Card, Statistic } from "semantic-ui-react";
+import FoodCardGroup from "./FoodCardGroup";
+import { Responsive, Grid, Statistic } from "semantic-ui-react";
 
 class Home extends Component {
   handleRemoveCard = id => {
@@ -70,7 +70,7 @@ class Home extends Component {
             "rgb(234, 176, 46)"
           ],
           borderWidth: 1,
-          data: [2200, 2500, 2200, 2500, 1800, 2200, 2350]
+          data: [2250, 2450, 2200, 2500, 1950, 2175, 2350]
         }
       ]
     };
@@ -81,22 +81,28 @@ class Home extends Component {
       // Number - The number of steps in a hard coded scale
       scaleSteps: 5,
       // Number - The value jump in the hard coded scale
-      scaleStepWidth: 300,
+      scaleStepWidth: 200,
       // Number - The scale starting value
       scaleStartValue: 1600
     };
 
     return (
-      <div>
+      <div style={{ height: "100%" }}>
         <h1> Home </h1>
-        <Grid columns={2} padded>
-          <Grid.Column verticalAlign={"middle"} floated={"left"}>
+        <Grid
+          columns={2}
+          padded
+          verticalAlign={"middle"}
+          style={{ height: "100%" }}
+          stretched
+        >
+          <Grid.Column verticalAlign={"middle"} floated={"left"} stretched>
             <Grid.Row>
               <Grid columns={"equal"} padded={"vertically"}>
                 <Grid.Column verticalAlign={"middle"} stretched>
                   <Responsive
                     as={DoughnutChart}
-                    title="Pie Graph"
+                    title="This Week's Goals"
                     height="180"
                     data={data}
                     options={{
@@ -111,8 +117,8 @@ class Home extends Component {
                   only="computer"
                 >
                   <Statistic>
-                    <Statistic.Value>5,500</Statistic.Value>
-                    <Statistic.Label>Points</Statistic.Label>
+                    <Statistic.Value>2,200</Statistic.Value>
+                    <Statistic.Label>Calorie Target</Statistic.Label>
                   </Statistic>
                 </Grid.Column>
               </Grid>
@@ -122,7 +128,7 @@ class Home extends Component {
                 <Grid.Column>
                   <Responsive
                     as={BarChart}
-                    title="Bar Graph"
+                    title="Calories this week"
                     height="320"
                     data={barData}
                     options={options}
@@ -147,40 +153,7 @@ class Home extends Component {
             floated={"right"}
             textAlign={"left"}
           >
-            <Card.Group itemsPerRow={"2"} stackable>
-              <FoodCard
-                ImageSource={"../chicken.jpg"}
-                Title="Hawaiian BBQ Chicken"
-                Subtitle="Main Dish"
-                Description="Gluten Free"
-                handleRemove={this.props.handleRemoveCard}
-                id="1"
-              />
-              <FoodCard
-                ImageSource={"../rice.jpg"}
-                Title="Garlic & Ginger Jasmine Rice"
-                Subtitle="Side Dish"
-                Description="Vegan, Gluten Free"
-                handleRemove={this.props.handleRemoveCard}
-                id="2"
-              />
-              <FoodCard
-                ImageSource={"../carrots.jpg"}
-                Title="Roasted Baby Carrots"
-                Subtitle="Side Dish"
-                Description="Vegan, Gluten Free"
-                handleRemove={this.props.handleRemoveCard}
-                id="3"
-              />
-              <FoodCard
-                ImageSource={"../cookie.jpg"}
-                Title="Freshly Baked Chocolate Chip Cookie"
-                Subtitle="Dessert"
-                Description="Vegetarian"
-                handleRemove={this.props.handleRemoveCard}
-                id="4"
-              />
-            </Card.Group>
+            <FoodCardGroup />
           </Grid.Column>
         </Grid>
       </div>

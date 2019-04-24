@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import { Header, Grid, Form, Button, Icon, Radio } from "semantic-ui-react";
+import { Header, Grid, Form, Button, Radio } from "semantic-ui-react";
 import ValidatedInputField from "../ValidatedInput";
 
-const minHeight = 20;
-const maxHeight = 100;
-const minWeight = 50;
-const minAge = 18;
+// const minHeight = 20;
+// const maxHeight = 100;
+// const minWeight = 50;
+// const minAge = 18;
 
 export default class PersonalInformation extends Component {
   state = {
     height: 0,
     weight: 0,
     age: 0,
+    gender: "",
     heightValid: false,
     weightValid: false,
     ageValid: false,
@@ -38,6 +39,10 @@ export default class PersonalInformation extends Component {
       //   });
     }
     this.setState({ [field + "Valid"]: false, fieldsChanged: true });
+  };
+
+  handleRadioChange = (e, data) => {
+    this.setState({ fieldsChanged: true, gender: data.value });
   };
 
   checkAllFieldsValid() {

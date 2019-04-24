@@ -32,7 +32,7 @@ class FoodCard extends Component {
         </Card.Content>
         <Card.Content extra>
           <Link
-            to=""
+            to="#"
             onClick={() => {
               this.props.handleRemove(this.props.id);
             }}
